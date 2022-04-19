@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     //randomizar el array de cartas
     cardArr.sort(()=> 0.5 - Math.random())
 
-    const cardsChosen=[];
-    const cardsChosenId=[];
-    const cardsWon=[];
+    let cardsChosen=[];
+    let cardsChosenId=[];
+    let cardsWon=[];
     const resultDisplay = document.querySelector("#result")
 
     // creo variable grid y agarro de html la clase grid
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             var card=document.createElement("img");
             card.setAttribute("src","images/grass.jpg")
             card.setAttribute("data-id", i)
-            //card.addEventListener("click",flipcard)
+            card.addEventListener("click",flipcard)
             grid.appendChild(card)
         }
     }
@@ -90,11 +90,12 @@ document.addEventListener('DOMContentLoaded',()=>{
             cards[optTwoId].setAttribute("src","images/grass.jpg")
             alert("sorry, try again")
         }
-        cardsChosen=[]; //reseteamos a 0 
-        cardsChosenId=[]; //reseteamos a 0
+        cardsChosen = []; //reseteamos a 0 
+        cardsChosenId = []; //reseteamos a 0
         resultDisplay.textContent = cardsWon.length
         if (cardsWon.length===cardArr.length/2){
             resultDisplay.textContent="You've caught them all!!"
+            
         }
     }
 
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         cardsChosenId.push(cardId)               // 3° guardamos la id en un arr externo
         this.setAttribute("src", cardArr[cardId].img) //4° le damos a la carta la img que le corresponde segun si id
         //5° cuando tocamos 2 cartas chequea si son match
-        if(cardsChosen.length ===2){
+        if(cardsChosen.length === 2){
             setTimeout(checkForMatch, 500)
         }
     }
