@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener('DOMContentLoaded',()=>{
 
     //card options : array de obj, cada uno es una carta (no incluye blank y grass)
     const cardArr=[
@@ -57,4 +57,5 @@ document.addEventListener("DOMContentLoaded",()=>{
             grid.appendChild(card)
         }
     }
+    createBoard()
 })
